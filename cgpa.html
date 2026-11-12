@@ -29,28 +29,28 @@
                     </tr>
                     <tr>
                         <td><input type="text" ></td>
-                        <td><input type="number"> </td>
-                        <td> <input type="number"></td>
+                        <td><input id="creditunitone" type="number"> </td>
+                        <td><input id="gradepointone" type="number"></td>
                     </tr>
                     <tr> 
                         <td><input type="text"></td>
-                        <td><input type="number"></td>
-                        <td><input type="number"></td>
+                        <td><input id="creditunittwo" type="number"></td>
+                        <td><input id="gradepointtwo" type="number"></td>
                     </tr>
                     <tr>
                         <td><input type="text"></td>
-                        <td><input type="number"></td>
-                        <td><input type="number"></td>
+                        <td><input id="creditunitthree" type="number"></td>
+                        <td><input id="gradepointthree" type="number"></td>
                     </tr>
                     <tr>
                         <td><input type="text"></td>
-                        <td><input type="number"></td>
-                        <td><input type="number"></td>
+                        <td><input id="creditunitfour" type="number"></td>
+                        <td><input id="gradepointfour" type="number"></td>
                     </tr>
                 </table>
 
             </div>
-            <button style="background-color: rgb(0, 86, 210); width: 230px; height: 35px; color: white; font-size: 15px; font-weight: bold; letter-spacing: 0.7px; border-radius: 8px; border: 0.5px rgb(0, 86, 210);">
+            <button onclick= "showResult()" style="background-color: rgb(0, 86, 210); width: 230px; height: 35px; color: white; font-size: 15px; font-weight: bold; letter-spacing: 0.7px; border-radius: 8px; border: 0.5px rgb(0, 86, 210);">
               <i style=" font-size: 16px;" class="fa-solid fa-calculator"></i> Calculate GPA
             </button>
             <div class="result-box" style="background-color: rgb(222, 243, 227); border: 1.5px solid rgb(74, 222, 128); width:90%; box-sizing: border-box; border-radius: 8px; margin-bottom: 10px;">
@@ -59,25 +59,66 @@
                 <span style="text-align: center; margin: 0 0 6px 0; font-size: 20px; color: green; font-weight: bold;">Your Result</span>
                </div> 
                <div style="display: flex;  gap: 178px; padding-left: 20px;">
-                <span style="font-size: 14px;">Total Credit Units:</span>
-                <span>0</span>
+                <span  style="font-size: 14px;">Total Credit Units:</span>
+                <span id="totalCredit">0</span>
                </div>
                 <div style="display: flex;  gap: 166px; padding-left: 20px;">
                 <span style="font-size: 14px;">Total Quality Points:</span>
-                <span>0</span>
+                <span id="totalQuality">0</span>
                </div>
                 <div style="display: flex;  gap: 237px; color: green; font-size: 19px; font-weight: bold; padding-left: 20px; background-color: rgb(134, 239, 172); padding-top: 5px; padding-bottom: 5px; border-radius: 7px;">
                 <span>GPA:</span>
-                <span>0</span>
+                <span id="showCgpa">0</span>
                </div>
             </div>
 
         </div>
     </div>
 </div>
+<!-- javascript calculator -->
 <script>
-    
+    function showResult(){
+        // all credit units value
+        let creditunit_one = Number(document.getElementById("creditunitone").value);
+        let creditunit_two = Number(document.getElementById("creditunittwo").value);
+        let creditunit_three = Number(document.getElementById("creditunitthree").value);
+        let creditunit_four = Number(document.getElementById("creditunitfour").value);
 
-</script>
+
+        
+        let total_credit_units = creditunit_one + creditunit_two + creditunit_three + creditunit_four
+        console.log(total_credit_units);
+
+
+        document.getElementById("totalCredit").innerHTML= total_credit_units;
+        console.log(totalCredit);
+
+        // all grade points values
+        let gradepoint_one = Number(document.getElementById("gradepointone").value);
+        let gradepoint_two = Number(document.getElementById("gradepointtwo").value);
+        let gradepoint_three = Number(document.getElementById("gradepointthree").value);
+        let gradepoint_four = Number(document.getElementById("gradepointfour").value);
+
+        let total_grade_points= gradepoint_one + gradepoint_two + gradepoint_three + gradepoint_four;
+        console.log(total_grade_points);
+
+
+        // Quality points values
+        let quality_one = creditunit_one * gradepoint_one;
+        let quality_two = creditunit_two * gradepoint_two;
+        let quality_three = creditunit_three * gradepoint_three;
+        let quality_four = creditunit_four * gradepoint_four;
+
+        // total quality points
+        let total_quality_points = quality_one + quality_two + quality_three + quality_four;
+
+        document.getElementById("totalQuality").innerHTML= total_quality_points;
+
+        let show_cgpa = total_quality_points / total_credit_units;
+
+        document.getElementById("showCgpa").innerHTML = show_cgpa;
+
+    }
+</script> 
 </body>
 </html>
