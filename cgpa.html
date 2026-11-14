@@ -85,7 +85,7 @@
         let creditunit_four = Number(document.getElementById("creditunitfour").value);
 
 
-        
+        // our total credit units
         let total_credit_units = creditunit_one + creditunit_two + creditunit_three + creditunit_four
         console.log(total_credit_units);
 
@@ -99,8 +99,8 @@
         let gradepoint_three = Number(document.getElementById("gradepointthree").value);
         let gradepoint_four = Number(document.getElementById("gradepointfour").value);
 
+        //  our total gradepoints
         let total_grade_points= gradepoint_one + gradepoint_two + gradepoint_three + gradepoint_four;
-        console.log(total_grade_points);
 
 
         // Quality points values
@@ -114,10 +114,10 @@
 
         document.getElementById("totalQuality").innerHTML= total_quality_points;
 
+        // our cgpa score
         let show_cgpa = total_quality_points / total_credit_units;
 
         document.getElementById("showCgpa").innerHTML = show_cgpa;
-
     }
 </script> 
 </body>
